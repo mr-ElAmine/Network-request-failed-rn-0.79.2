@@ -95,3 +95,9 @@ To learn more about React Native, take a look at the following resources:
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+## Problème connu : échec des requêtes réseau après un rechargement
+
+Lors de la première installation et ouverture de l'application, les appels HTTP et HTTPS fonctionnent normalement.
+Après avoir rechargé l'application (par exemple en utilisant l'option *Reload* du menu développeur), toutes les requêtes réseau retournent l'erreur `Network request failed`.
+La réinstallation de l'application rétablit temporairement le fonctionnement, mais le problème revient au prochain rechargement.
