@@ -1,5 +1,12 @@
 import React from 'react';
-import {Button, ScrollView, StatusBar, View, Alert} from 'react-native';
+import {
+  Button,
+  ScrollView,
+  StatusBar,
+  View,
+  Alert,
+  StyleSheet,
+} from 'react-native';
 
 function App(): React.JSX.Element {
   const handleFetchTodo = () => {
@@ -32,13 +39,24 @@ function App(): React.JSX.Element {
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <StatusBar />
-      <ScrollView>
+      <ScrollView contentContainerStyle={styles.scrollContent}>
         <Button title="Récupérer le TODO" onPress={handleFetchTodo} />
       </ScrollView>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1, // Prend tout l'écran
+  },
+  scrollContent: {
+    flexGrow: 1, // Permet au ScrollView de prendre toute la hauteur disponible
+    justifyContent: 'center', // Centre verticalement le contenu
+    alignItems: 'center', // Centre horizontalement le contenu
+  },
+});
 
 export default App;
