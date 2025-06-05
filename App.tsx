@@ -8,6 +8,7 @@
 import React from 'react';
 import type {PropsWithChildren} from 'react';
 import {
+  Button,
   ScrollView,
   StatusBar,
   StyleSheet,
@@ -72,16 +73,34 @@ function App(): React.JSX.Element {
    */
   const safePadding = '5%';
 
+  const handleFetchTodo = () => {
+    fetch('https://jsonplaceholder.typicode.com/todos/1', {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(response => response.json())
+      .then(json => {
+        console.log(json);
+      })
+      .catch(error => {
+        console.error('Erreur lors du fetch :', error);
+      });
+  };
+
   return (
     <View style={backgroundStyle}>
       <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <ScrollView
-        style={backgroundStyle}>
+      <ScrollView style={backgroundStyle}>
         <View style={{paddingRight: safePadding}}>
-          <Header/>
+          <Header />
+        </View>
+        <View>
+          <Button title="Récupérer le TODO" onPress={handleFetchTodo} />
         </View>
         <View
           style={{
